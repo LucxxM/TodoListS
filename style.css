@@ -1,0 +1,20 @@
+.task{
+    position: relative;
+}
+
+.inputBox{
+    margin-bottom: 2em;
+    margin-top: 2em;
+    list-style: none;
+    text-align: center;
+    border: 2px solid #ccc;
+}
+
+/* #inputTitle{
+    display: none;
+} */
+
+.display-none{
+    display: none;  
+}
+
