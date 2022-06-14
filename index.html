@@ -9,11 +9,12 @@
 </head>
 <body>
     <h1>To Do List</h1>
-    <button id="showForm" onclick="showForm()">Show Form for Add Todo</button>
+    <div id="btn-box">
+        <button id="showForm" onclick="showForm()">Show Form for Add Todo</button>
+    </div>
     <div class="display-none" id="display-add__form">
-        <input type="text" name="title" id="inputTitle">
+        <input type="text" name="title" id="inputTitle" placeholder="Enter the title of the todo">
         <button id="addTodo">Add A ToDo</button>
-
     </div>
     <div class="task-box">
         <div id="task">
@@ -21,7 +22,6 @@
     </div>
     <button id="loadTodo">Load Prev Tasks</button>
     
-
     <script src="script.js"></script>
 </body>
 </html>

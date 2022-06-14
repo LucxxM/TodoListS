@@ -1,20 +1,74 @@
-.task{
-    position: relative;
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(61, 61, 61);
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+button{
+    padding: 1em;
+    background-color: rgb(158, 36, 36);
+    border-radius: 45px;
+    color: white;
+    
+}
+
+input::placeholder{
+    color: rgb(255, 0, 0);
+    background-color: grey;
+}   
+
+#btn-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#display-add__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    margin: 1em;
+    border: 1px solid black;
+}
+
+input{
+    margin: 1em;
+}
+
+.task-box{
+    width: 100%;
+}
+
+#task{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+#task div{
+    min-width: 175px;
 }
 
 .inputBox{
-    margin-bottom: 2em;
-    margin-top: 2em;
+    margin: 2em;
+    height: max-content;
     list-style: none;
     text-align: center;
-    border: 2px solid #ccc;
+    border: 4px solid #ccc;
 }
 
-/* #inputTitle{
-    display: none;
-} */
-
 .display-none{
-    display: none;  
+    display: none !important;  
 }
 

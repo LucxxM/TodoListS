@@ -2,9 +2,9 @@ const task = document.querySelector("#task");
 const addTodo = document.querySelector("#addTodo");
 const inputTilte = document.querySelector("#inputTitle");
 
-let idInputBox = 0;
+let idInputBox = localStorage.length;
 let id = localStorage.length;
-let todoListId = 0;
+let todoListId = localStorage.length;
 
 addTodo.addEventListener("click", function () {
   
@@ -15,6 +15,8 @@ addTodo.addEventListener("click", function () {
   const tilteValue = inputTilte.value;
   let todoList = [];
 
+  inputTilte.value = "";
+
   
   id++;
   todoListId++;
@@ -24,7 +26,7 @@ addTodo.addEventListener("click", function () {
   inputBox.classList.add("inputBox");
   inputBox.id = idInputBox;
   title.style.textAlign = "center";
-  title.style.color = "blue";
+  title.style.color = "rgb(255, 0, 0)";
   title.innerHTML = tilteValue;
   btn.type = "submit";
   btn.innerHTML = "add";
@@ -49,28 +51,31 @@ addTodo.addEventListener("click", function () {
     newTask.innerHTML = input.value;
     newTask.title = input.value;
     newTask.id = taskId;
-    newTask.style.backgroundColor = "blue";
+    newTask.style.backgroundColor = "rgb(255, 0, 0)";
     newTask.style.opacity = "1";
     newTask.style.color = "white";
     inputBox.appendChild(newTask);
+    newTask.done = false;
     input.value = "";
 
     newTask.addEventListener("click", function () {
       if (this.style.opacity === "1") {
         this.style.opacity = "0.5";
         this.style.textDecoration = "line-through";
+        this.done = true;
       } else {
         this.style.opacity = "1";
         this.style.textDecoration = "none";
+        this.done = false;
       }
     });
 
     newTask.addEventListener("dblclick", function () {
       this.remove();
       todoList.pop(this);
-      if (todoList.length === 0) {
-        inputBox.remove();
-      }
+      // if (todoList.length === 0) {
+      //   inputBox.remove();
+      // }
 
       const data = {
         id: idInputBox,
@@ -87,8 +92,10 @@ addTodo.addEventListener("click", function () {
     const task = {
       id: newTask.id,
       title: newTask.title,
-      done: true,
+      done: newTask.done,
     };
+
+    console.log(newTask.done);
 
     todoList.push(task);
 
@@ -104,6 +111,7 @@ addTodo.addEventListener("click", function () {
     const dataJson = JSON.stringify(data);
     console.log(dataJson);
     localStorage.setItem(id, dataJson, todoList);
+  
 
     console.log(localStorage);
   });
@@ -142,7 +150,7 @@ loadTodo.addEventListener("click", function () {
       const newTask = document.createElement("li");
       newTask.innerHTML = task.title;
       newTask.title = task.title;
-      newTask.style.backgroundColor = "blue";
+      newTask.style.backgroundColor = "rgb(255, 0, 0)";
       newTask.style.opacity = "1";
       newTask.style.color = "white";
       inputBox.appendChild(newTask);
@@ -190,7 +198,7 @@ loadTodo.addEventListener("click", function () {
     inputBox.classList.add("inputBox");
     inputBox.id = idInputBox;
     tilte.style.textAlign = "center";
-    tilte.style.color = "blue";
+    tilte.style.color = "rgb(255, 0, 0)";
     tilte.innerHTML = tilteValue;
     btn.type = "submit";
     btn.innerHTML = "add";
@@ -247,7 +255,7 @@ loadTodo.addEventListener("click", function () {
       const task = {
         id: taskId,
         title: newTask.title,
-        done: true,
+        done: newTask.done,
       };
 
       todoList.push(task);
